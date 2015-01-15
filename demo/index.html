@@ -20,5 +20,10 @@
   <p><span i18n="block with EMBEDDED SPANs">
     Hello {{user}} <span>First span contains <span class="inner span">a second span</span> inside it</span> your world!
   </span>
+
+  <span i18n="greeting|Greet the user">Hello <b>{{user}}</b></span>
+  <input i18n-placeholder="firstname|Input placeholder for user's name"
+      placeholder="Enter your name, {{user // i18n-ph(USERNAME|Alice) }}">
+
 </body>
 </html>

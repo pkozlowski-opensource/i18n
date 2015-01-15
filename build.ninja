@@ -1,0 +1,50 @@
+rule typescript_to_js
+  description = typescript_to_js: $in → $out
+  depfile = $in.d
+  command = ck typescript_write_depfile --depfile $in.d $in && tsc --target ES5 -d --sourceMap --out $out_js $in
+
+
+rule typescript_to_nodejs
+  description = typescript_to_nodejs: $in → $out
+  command = tsc --target ES5 --module commonjs -d --sourceMap $in
+
+rule babeljs
+  description = babel: $in → $out
+  command = babel --source-maps --stage 0 --out-file $out $in
+
+
+
+build lib/message_types.js lib/message_types.d.ts: typescript_to_nodejs $
+    lib/message_types.ts
+build lib/config.js lib/config.d.ts: typescript_to_nodejs lib/config.ts
+build lib/LoadingCache.js lib/LoadingCache.d.ts: typescript_to_nodejs $
+    lib/LoadingCache.ts
+build lib/extractMessages.js lib/extractMessages.d.ts: typescript_to_nodejs $
+    lib/extractMessages.ts
+build lib/Counter.js lib/Counter.d.ts: typescript_to_nodejs lib/Counter.ts
+build lib/stringUtils.js: babeljs lib/stringUtils.es6
+build lib/quoting.js: babeljs lib/quoting.es6
+build lib/hashing.js: babeljs lib/hashing.es6
+build lib/fingerprinting.js: babeljs lib/fingerprinting.es6
+build lib/parse_html.js: babeljs lib/parse_html.es6
+build lib/parse_messages.js: babeljs lib/parse_messages.es6
+build lib/placeholderRegistry.js: babeljs lib/placeholderRegistry.es6
+build lib/placeholderRegistryHints.js: babeljs $
+    lib/placeholderRegistryHints.es6
+
+
+# rule build_ninja_file
+#   description = Building build.ninja
+#   deps = gcc
+#   depfile = build.ninja.d
+#   command = echo $$'build.ninja:  $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/prologue.jinja $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/epilogue.jinja $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/ninja_base.jinja $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/__init__.py $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/__main__.py $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/ninja_syntax.py $
+#     /Users/chirayu/ck/ck5/python/ck/ckbuild/rules.py' > build.ninja.d && ck build_ninja_from_ckb --ninja_fname=build.ninja $in
+#   generator = 1
+# 
+# build build.ninja: build_ninja_file build.ckb

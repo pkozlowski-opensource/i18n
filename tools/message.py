@@ -4,11 +4,8 @@
 import logging
 logger = logging.getLogger(__name__)
 
-import cgi
-import itertools
+import cgi, itertools, re, hashlib
 from collections import deque, OrderedDict, namedtuple, defaultdict
-import re
-import hashlib
 
 from .pretty_print import pp, pf
 
@@ -17,6 +14,7 @@ class Error(Exception):
 
 class LintError(Error):
   pass
+
 
 # Callback:  During (pseudo-)translation, we parse the source files and want to
 # perform DOM transforms.  For each extracted message, we would see if we have
@@ -163,7 +161,7 @@ class PlaceholderRegistry(object):
       # the <a> tag can be "LINK" instead of "A".  Such a mapping cannot be
       # changed later because it would break message fingerprinting.
       MAPPINGS = defaultdict(dict, {
-        HtmlTagPair.__name__: dict(A="LINK")
+        HtmlTagPair.__name__: dict(A="LINK", B="BOLD_TEXT")
       })
       return MAPPINGS.get(placeholder.__class__.__name__).get(placeholder.tag.upper(), placeholder.tag.upper())
     else:
@@ -310,7 +308,7 @@ class MessageBuilder(object):
       yield i
 
   def _compute_id(self):
-    hasher = hashlib.md5()
+    hasher = hashlib.sha1()
     for part in self._gen_id_parts():
       hasher.update(part.encode("utf-8"))
     return hasher.hexdigest()
@@ -474,7 +472,7 @@ def parse_ng_expression(text):
     raise Error("Angular expression has a comment but it wasn't valid i18n-ph() syntax")
   ph_text = m.group(1).strip()
   parts = ph_text.split("|", 1)
-  if len(parts):
+  if len(parts) > 0:
     ph_name = parts[0].strip()
     example = parts[-1].strip()
   else:

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+if which ninja ; then
+  ninja
+  exit $?
+fi
+
+typescript_to_js() {
+  set -x
+  tsc --target ES5 --module commonjs -d --sourceMap "$1"
+  set +x
+}
+
+babeljs() {
+  set -x
+  babel --source-maps --stage 0 --out-file "$2" "$1"
+  set +x
+}
+
+build_all() {
+  for f in message_types config LoadingCache extractMessages Counter ; do
+    typescript_to_js "lib/$f.ts"
+  done
+  for f in stringUtils quoting hashing fingerprinting parse_html parse_messages placeholderRegistry placeholderRegistryHints ; do
+    babeljs "lib/$f.es6" "lib/$f.js"
+  done
+}
+
+build_all

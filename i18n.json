@@ -1,0 +1,6 @@
+{
+  "htmlSrcs": [
+      "demo/index.html"
+  ],
+  "i18nDataDir": "i18nData"
+}
