@@ -31,3 +31,6 @@ export class LoadingCache<K, V> {
     return this._map;
   }
 }
+
+// Support importing from babeljs transpiled files.
+export var __esModule = true;

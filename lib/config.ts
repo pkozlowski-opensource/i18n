@@ -37,3 +37,6 @@ export function loadConfigFromFile(fname): AppConfig {
 export function loadAppConfig(): AppConfig {
   return loadConfigFromFile(DEFAULT_CONFIG_FNAME);
 }
+
+// Support importing from babeljs transpiled files.
+export var __esModule = true;

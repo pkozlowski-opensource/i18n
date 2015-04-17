@@ -162,3 +162,6 @@ export class Message {
               public parts: MessagePart[],
               public placeholdersMap: PlaceHoldersMap) {}
 }
+
+// Support importing from babeljs transpiled files.
+export var __esModule = true;
