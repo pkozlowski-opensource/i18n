@@ -89,3 +89,4 @@ export declare class Message {
     placeholdersMap: PlaceHoldersMap;
     constructor(id: string, meaning: string, comment: string, parts: MessagePart[], placeholdersMap: PlaceHoldersMap);
 }
+export declare var __esModule: boolean;

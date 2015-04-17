@@ -5,3 +5,4 @@ export declare class Counter {
     };
     constructor(initial: number);
 }
+export declare var __esModule: boolean;

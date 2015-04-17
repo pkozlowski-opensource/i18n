@@ -14,3 +14,4 @@ export declare class LoadingCache<K, V> {
     get(key: K): V;
     asMap(): Map<K, V>;
 }
+export declare var __esModule: boolean;
