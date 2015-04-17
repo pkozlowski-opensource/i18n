@@ -39,9 +39,7 @@ function* _genIdParts(msgBuilder) {
 function* _genIdPartsForSubparts(parts) {
   var placeholders = new Map();
   for (let part of parts) {
-    if (typeof part === 'string') {
-      yield `${BEGIN_TEXT}${_escapeTextForMessageId(part)}${ESCAPE_END}`;
-    } else if (part instanceof M.TextPart) {
+    if (part instanceof M.TextPart) {
       yield `${BEGIN_TEXT}${_escapeTextForMessageId(part.value)}${ESCAPE_END}`;
     } else if (part instanceof M.PlaceholderBase) {
       placeholders.set(part.name, part);

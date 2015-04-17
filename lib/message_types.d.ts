@@ -9,7 +9,7 @@ export declare var TYPENAME_TAG_PAIR_BEGIN_REF: string;
 export declare var TYPENAME_TAG_PAIR_END_REF: string;
 export declare var TYPENAME_HTML_TAG_PAIR: string;
 export declare var TYPENAME_NG_EXPR: string;
-export declare type MessagePart = string | Placeholder | TagPair;
+export declare type MessagePart = TextPart | Placeholder | TagPair;
 export interface GetStableTypeName {
     (): string;
 }

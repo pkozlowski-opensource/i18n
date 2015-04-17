@@ -18,7 +18,7 @@ export var /*const*/ TYPENAME_HTML_TAG_PAIR = "HtmlTagPair";
 export var /*const*/ TYPENAME_NG_EXPR = "NgExpr";
 
 
-export type MessagePart = string|Placeholder|TagPair;
+export type MessagePart = TextPart|Placeholder|TagPair;
 
 export interface GetStableTypeName {
   (): string;

@@ -96,7 +96,7 @@ function parseMessageTextForNgExpressions(text, placeholderRegistry) {
   for (let i = 0; i + 1 < splits.length; i += 2) {
     var txt = splits[i];
     if (txt.length > 0) {
-      parts.push(txt);
+      parts.push(new M.TextPart(txt));
     }
     var expr = splits[i+1].trim();
     if (expr.length > 0) {
