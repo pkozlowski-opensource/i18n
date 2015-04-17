@@ -1,6 +1,3 @@
-// For definition of Symbol, etc.
-require("babel/polyfill");
-
 var assert = require("assert"),
     parse5 = require("parse5");
 

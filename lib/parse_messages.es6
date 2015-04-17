@@ -1,8 +1,5 @@
 "use strict";
 
-// For definition of Symbol, etc.
-require("babel/polyfill");
-
 var assert = require("assert"),
     util = require("util"),
     fs = require("fs"),

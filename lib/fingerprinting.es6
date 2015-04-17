@@ -1,8 +1,5 @@
 "use strict";
 
-// For definition of Symbol, etc.
-require("babel/polyfill");
-
 var assert = require("assert"),
     message_types = require("./message_types.js"),
     hashing = require("./hashing"),

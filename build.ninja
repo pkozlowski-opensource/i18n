@@ -10,7 +10,7 @@ rule typescript_to_nodejs
 
 rule babeljs
   description = babel: $in → $out
-  command = babel --source-maps --stage 0 --out-file $out $in
+  command = babel --optional runtime --source-maps --stage 0 --out-file $out $in
 
 
 
