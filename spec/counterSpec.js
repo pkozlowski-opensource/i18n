@@ -2,7 +2,7 @@
 
 require('source-map-support').install();
 
-var Counter = require("../lib/Counter").Counter;
+var Counter = require("../lib/Counter").default;
 
 describe("Counter", function() {
   describe("initial value", function() {

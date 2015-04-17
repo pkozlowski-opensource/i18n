@@ -1,6 +1,6 @@
 import * as M from './message_types';
 import {LoadingCache} from './LoadingCache';
-import {Counter} from './Counter';
+import Counter from './Counter';
 import {getNameHintForPlaceholder} from './placeholderRegistryHints';
 
 if ((true + true !== 2) || (false + false) !== 0) {
@@ -11,7 +11,7 @@ function toBool(x) {
   return x ? true : false;
 }
 
-class PlaceholderRegistry {
+export default class PlaceholderRegistry {
   constructor() {
     this._namesSeen = new Set();
     // We require an ordered Map.  ES6 Map's iterate in insertion order (Map.forEach)
@@ -126,5 +126,3 @@ class PlaceholderRegistry {
     return placeholder;
   }
 }
-
-module.exports = PlaceholderRegistry;

@@ -1,6 +1,6 @@
 // Based on python's itertools.count(N)
 
-export class Counter {
+export default class Counter {
   private _current: number;
   public next: { (): number };
 
