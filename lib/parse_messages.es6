@@ -1,5 +1,3 @@
-"use strict";
-
 var assert = require("assert"),
     util = require("util"),
     fs = require("fs"),

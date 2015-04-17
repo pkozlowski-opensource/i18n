@@ -1,5 +1,3 @@
-"use strict";
-
 var stringUtils = require("./stringUtils");
 
 function escapeHtmlAttributePart(value) {

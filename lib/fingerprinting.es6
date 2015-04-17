@@ -1,5 +1,3 @@
-"use strict";
-
 var assert = require("assert"),
     message_types = require("./message_types.js"),
     hashing = require("./hashing"),

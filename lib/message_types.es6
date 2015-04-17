@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * This is our canonical implementation of the message types as defined in our official specification (message_types.ts)
  */
