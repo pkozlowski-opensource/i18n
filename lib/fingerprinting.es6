@@ -1,6 +1,6 @@
 import assert from 'assert';
 import * as message_types from './message_types';
-import hashing from './hashing';
+import * as hashing from './hashing';
 import S from 'string';
 
 // Escape sequences for fingerprinting.
@@ -21,7 +21,7 @@ function _escapeTextForMessageId(text) {
   return text.replace(ESCAPE_CHAR_RE, ESCAPE_CHAR + ESCAPE_CHAR);
 }
 
-function computeIdForMessageBuilder(msgBuilder) {
+export function computeIdForMessageBuilder(msgBuilder) {
   var hasher = new hashing.SHA1();
   for (let part of _genIdParts(msgBuilder)) {
     hasher.update(part);
@@ -64,5 +64,3 @@ function* _genIdPartsForSubparts(parts) {
     yield `{BEGIN_PH}{name},{placeholder.getStableTypeName()}{ESCAPE_END}`;
   }
 }
-
-exports.computeIdForMessageBuilder = computeIdForMessageBuilder;

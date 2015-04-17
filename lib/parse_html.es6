@@ -3,10 +3,10 @@ import parse5 from 'parse5';
 
 var _ADAPTER = parse5.TreeAdapters.default;
 
-exports.adapter = _ADAPTER;
+export var adapter = _ADAPTER;
 
 // Returns the root element.
-exports.parseHtml = function parseHtml(html) {
+export function parseHtml(html) {
   let parser = new parse5.Parser(_ADAPTER);
   let root = parser.parse(html);
   // Normally, "root" is the document node and contains the optional doctype

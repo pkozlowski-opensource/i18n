@@ -13,7 +13,7 @@ interface Hasher {
 }
 */
 
-class SHA1 /* implements Hasher */ {
+export class SHA1 /* implements Hasher */ {
   constructor() {
     this._shasum = crypto.createHash('sha1');
   }
@@ -29,5 +29,3 @@ class SHA1 /* implements Hasher */ {
     return result;
   }
 }
-
-exports.SHA1 = SHA1;

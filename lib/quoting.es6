@@ -1,4 +1,4 @@
-import stringUtils from './stringUtils';
+import * as stringUtils from './stringUtils';
 
 function escapeHtmlAttributePart(value) {
   return value.replace(/&/g, '&amp;')
@@ -6,8 +6,6 @@ function escapeHtmlAttributePart(value) {
               .replace(/>/g, '&gt;');
 }
 
-function quoteHtmlAttribute(value) {
+export function quoteHtmlAttribute(value) {
   return stringUtils.quoteString(escapeHtmlAttributePart(value), '&quot;');
 }
-
-exports.quoteHtmlAttribute = quoteHtmlAttribute;

@@ -69,7 +69,7 @@ function _splitFromRight(text, separator, shouldContinueFn) {
 }
 
 // split at most maxTimes.
-function splitN(text, separator, maxTimes, fromRight) {
+export function splitN(text, separator, maxTimes, fromRight) {
   assert(maxTimes === void 0 || (maxTimes >= -1 && Math.floor(maxTimes) == maxTimes), "maxTimes must be an integer >= -1");
   assert(separator != "" && typeof separator == "string", "separator cannot be an empty string");
   var shouldContinueFn = _repeatN(maxTimes, true, false);
@@ -81,7 +81,7 @@ function splitN(text, separator, maxTimes, fromRight) {
   return pieces;
 }
 
-function quoteString(value, dQuoteReplacement) {
+export function quoteString(value, dQuoteReplacement) {
   var quoteTypes = (value.indexOf("'") != -1 ? 1 : 0) + (value.indexOf('"') != -1 ? 2 : 0);
   // If there are double quotes in the string but no single quotes,
   // then simply wrap with single quotes and return. No escaping needed.
@@ -95,6 +95,3 @@ function quoteString(value, dQuoteReplacement) {
   }
   return '"' + value + '"';
 }
-
-exports.splitN = splitN;
-exports.quoteString = quoteString;

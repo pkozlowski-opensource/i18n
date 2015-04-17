@@ -6,7 +6,7 @@ import {adapter as treeAdapter} from './parse_html';
 import PlaceholderRegistry from './placeholderRegistry';
 import {splitN} from './stringUtils';
 import {quoteHtmlAttribute} from './quoting';
-import fingerprinting from './fingerprinting';
+import * as fingerprinting from './fingerprinting';
 import S from 'string';
 
 function nop() {}
