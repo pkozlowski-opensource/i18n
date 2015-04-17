@@ -1,7 +1,7 @@
-var LoadingCache  = require("./LoadingCache").LoadingCache,
-    Counter       = require("./Counter").Counter,
-    message_types = require("./message_types"),
-    hints         = require("./placeholderRegistryHints");
+import {LoadingCache} from './LoadingCache';
+import {Counter} from './Counter';
+import * as message_types from './message_types';
+import * as hints from './placeholderRegistryHints';
 
 if ((true + true !== 2) || (false + false) !== 0) {
   throw Error("Internal Error: Please file an issue on GitHub with this stacktrace.");

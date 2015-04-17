@@ -1,13 +1,13 @@
-var assert = require("assert"),
-    util = require("util"),
-    fs = require("fs"),
-    message_types = require("./message_types.js"),
-    treeAdapter = require("./parse_html").adapter,
-    PlaceholderRegistry = require("./placeholderRegistry"),
-    splitN = require("./stringUtils").splitN,
-    quoteHtmlAttribute = require("./quoting").quoteHtmlAttribute,
-    fingerprinting = require("./fingerprinting"),
-    S = require("string");
+import assert from 'assert';
+import * as message_types from './message_types';
+import util from 'util';
+import fs from 'fs';
+import {adapter as treeAdapter} from './parse_html';
+import PlaceholderRegistry from './placeholderRegistry';
+import {splitN} from './stringUtils';
+import {quoteHtmlAttribute} from './quoting';
+import fingerprinting from './fingerprinting';
+import S from 'string';
 
 function nop() {}
 

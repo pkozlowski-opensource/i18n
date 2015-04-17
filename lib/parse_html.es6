@@ -1,6 +1,5 @@
-var assert = require("assert"),
-    parse5 = require("parse5");
-
+import assert from 'assert';
+import parse5 from 'parse5';
 
 var _ADAPTER = parse5.TreeAdapters.default;
 

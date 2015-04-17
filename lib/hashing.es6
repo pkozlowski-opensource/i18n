@@ -4,7 +4,7 @@
  * line or entirely change the underlying libraries we would use to do it.
  */
 
-var crypto = require("crypto");
+import crypto from 'crypto';
 
 /*
 interface Hasher {

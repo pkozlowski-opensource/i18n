@@ -1,4 +1,4 @@
-var stringUtils = require("./stringUtils");
+import stringUtils from './stringUtils';
 
 function escapeHtmlAttributePart(value) {
   return value.replace(/&/g, '&amp;')

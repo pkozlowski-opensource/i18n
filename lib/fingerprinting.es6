@@ -1,8 +1,7 @@
-var assert = require("assert"),
-    message_types = require("./message_types.js"),
-    hashing = require("./hashing"),
-    S = require("string");
-
+import assert from 'assert';
+import * as message_types from './message_types';
+import hashing from './hashing';
+import S from 'string';
 
 // Escape sequences for fingerprinting.
 // Fingerprinting requires unique digests for unique messages.  The approach is

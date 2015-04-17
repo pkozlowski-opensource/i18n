@@ -1,8 +1,8 @@
-var message_types = require("./message_types");
+import * as message_types from './message_types';
 
 var getNameHintForHtmlTag = require("./placeholderRegistryHintsForHtmlTags").getNameHintForHtmlTag;
 
-function getNameHintForPlaceholder(placeholder) {
+export function getNameHintForPlaceholder(placeholder) {
   if (placeholder instanceof message_types.TagPair) {
     var typeName = placeholder.getStableTypeName();
     switch (typeName) {
@@ -19,5 +19,3 @@ function getNameHintForPlaceholder(placeholder) {
     return (placeholder instanceof message_types.NgExpr) ? 'EXPRESSION' : 'PH';
   }
 }
-
-module.exports.getNameHintForPlaceholder = getNameHintForPlaceholder;
