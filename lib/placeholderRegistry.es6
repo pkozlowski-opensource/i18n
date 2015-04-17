@@ -1,6 +1,6 @@
 import {LoadingCache} from './LoadingCache';
 import {Counter} from './Counter';
-import * as message_types from './message_types';
+import * as M from './message_types';
 import * as hints from './placeholderRegistryHints';
 
 if ((true + true !== 2) || (false + false) !== 0) {
@@ -28,9 +28,9 @@ class PlaceholderRegistry {
     this._byFingerprint.forEach(placeholderOrTag => self._ensureName(placeholderOrTag));
     var result = new Map();
     for (let placeholderOrTag of this._byFingerprint.values()) {
-      if (placeholderOrTag instanceof message_types.PlaceholderBase) {
+      if (placeholderOrTag instanceof M.PlaceholderBase) {
         result.set(placeholderOrTag.name, placeholderOrTag);
-      } else if (placeholderOrTag instanceof message_types.TagPair) {
+      } else if (placeholderOrTag instanceof M.TagPair) {
         var tag_pair = placeholderOrTag;
         result.set(tag_pair.beginPlaceholderRef.name, tag_pair.beginPlaceholderRef);
         result.set(tag_pair.endPlaceholderRef.name, tag_pair.endPlaceholderRef);
@@ -77,7 +77,7 @@ class PlaceholderRegistry {
   }
 
   _ensureName(placeholder) {
-    if (placeholder instanceof message_types.TagPair) {
+    if (placeholder instanceof M.TagPair) {
       this._ensureNamesForTag(placeholder);
     } else {
       this.ensureNameForPlaceholder(placeholder);
@@ -91,7 +91,7 @@ class PlaceholderRegistry {
   }
 
   updatePlaceholder(placeholder) {
-    if (placeholder instanceof message_types.TagPair) {
+    if (placeholder instanceof M.TagPair) {
       return this._updateTagPlaceholder(placeholder);
     } else {
       return this._updateSimplePlaceholder(placeholder);

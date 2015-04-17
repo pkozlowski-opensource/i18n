@@ -1,5 +1,5 @@
 import assert from 'assert';
-import * as message_types from './message_types';
+import * as M from './message_types';
 import * as hashing from './hashing';
 import S from 'string';
 
@@ -41,11 +41,11 @@ function* _genIdPartsForSubparts(parts) {
   for (let part of parts) {
     if (typeof part === 'string') {
       yield `${BEGIN_TEXT}${_escapeTextForMessageId(part)}${ESCAPE_END}`;
-    } else if (part instanceof message_types.TextPart) {
+    } else if (part instanceof M.TextPart) {
       yield `${BEGIN_TEXT}${_escapeTextForMessageId(part.value)}${ESCAPE_END}`;
-    } else if (part instanceof message_types.PlaceholderBase) {
+    } else if (part instanceof M.PlaceholderBase) {
       placeholders.set(part.name, part);
-    } else if (part instanceof message_types.TagPair) {
+    } else if (part instanceof M.TagPair) {
       yield `${BEGIN_TAG}${part.beginPlaceholderRef.name},${part.getStableTypeName()}${ESCAPE_END}`;
       for (let i in _genIdPartsForSubparts(part.parts)) {
         yield i;

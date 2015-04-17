@@ -1,5 +1,5 @@
 import assert from 'assert';
-import * as message_types from './message_types';
+import * as M from './message_types';
 import util from 'util';
 import fs from 'fs';
 import {adapter as treeAdapter} from './parse_html';
@@ -61,7 +61,7 @@ function parseNgExpression(text) {
   // text should not have the {{ }} around it.
   text = text.trim();
   if (text.lastIndexOf("//") == -1) {
-    return new message_types.NgExpr(
+    return new M.NgExpr(
         /*name=*/name, /*text=*/text, /*examples=*/examples, /*comment=*/comment);
   }
   var parts = splitN(text, '//', 1);
@@ -80,7 +80,7 @@ function parseNgExpression(text) {
   }
   validateValidPlaceholderName(phName);
   var examples = (example == null) ? null : [example];
-  return new message_types.NgExpr(
+  return new M.NgExpr(
       /*name=*/phName, /*text=*/text, /*examples=*/examples, /*comment=*/comment);
 }
 
@@ -142,7 +142,7 @@ function _parseNode(node, placeholderRegistry) {
   }
   var canonicalKey = placeholderRegistry.reserveNewTag(treeAdapter.getTagName(node));
   var beginEndTags = _getHtmlBeginEndTags(node);
-  var tagPair = message_types.HtmlTagPair.NewForParsing(
+  var tagPair = M.HtmlTagPair.NewForParsing(
       /*tag=*/treeAdapter.getTagName(node),
       /*begin=*/beginEndTags.begin,
       /*end=*/beginEndTags.end,
@@ -181,11 +181,11 @@ class MessageBuilder {
   build() {
     var id = fingerprinting.computeIdForMessageBuilder(this);
     var placeholdersByName = this.placeholderRegistry.toMap();
-    return new message_types.Message(/*id=*/id,
-                                     /*meaning=*/this.meaning,
-                                     /*comment=*/this.comment,
-                                     /*parts=*/this.parts,
-                                     /*placeholdersByName=*/placeholdersByName);
+    return new M.Message(/*id=*/id,
+                         /*meaning=*/this.meaning,
+                         /*comment=*/this.comment,
+                         /*parts=*/this.parts,
+                         /*placeholdersByName=*/placeholdersByName);
   }
 }
 

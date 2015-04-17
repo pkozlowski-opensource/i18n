@@ -1,12 +1,12 @@
-import * as message_types from './message_types';
+import * as M from './message_types';
 
 var getNameHintForHtmlTag = require("./placeholderRegistryHintsForHtmlTags").getNameHintForHtmlTag;
 
 export function getNameHintForPlaceholder(placeholder) {
-  if (placeholder instanceof message_types.TagPair) {
+  if (placeholder instanceof M.TagPair) {
     var typeName = placeholder.getStableTypeName();
     switch (typeName) {
-      case message_types.TYPENAME_HTML_TAG_PAIR:
+      case M.TYPENAME_HTML_TAG_PAIR:
         return getNameHintForHtmlTag(placeholder.tag);
       default:
         // NOTE: If/When we support different tag types, we want to come up with
@@ -16,6 +16,6 @@ export function getNameHintForPlaceholder(placeholder) {
         throw Error(`InternalError: Placeholder hints for tags of type "${typeName}" are not yet implemented.`);
     }
   } else {
-    return (placeholder instanceof message_types.NgExpr) ? 'EXPRESSION' : 'PH';
+    return (placeholder instanceof M.NgExpr) ? 'EXPRESSION' : 'PH';
   }
 }
