@@ -1,7 +1,7 @@
+import * as M from './message_types';
 import {LoadingCache} from './LoadingCache';
 import {Counter} from './Counter';
-import * as M from './message_types';
-import * as hints from './placeholderRegistryHints';
+import {getNameHintForPlaceholder} from './placeholderRegistryHints';
 
 if ((true + true !== 2) || (false + false) !== 0) {
   throw Error("Internal Error: Please file an issue on GitHub with this stacktrace.");
@@ -45,7 +45,7 @@ class PlaceholderRegistry {
     if (placeholder.beginPlaceholderRef.name) {
       return;
     }
-    var nameHint = hints.getNameHintForPlaceholder(placeholder);
+    var nameHint = getNameHintForPlaceholder(placeholder);
     var beginBasename = nameHint + '_BEGIN',
         endBasename   = nameHint + '_END',
         phBeginName   = beginBasename,
@@ -66,7 +66,7 @@ class PlaceholderRegistry {
     if (placeholder.name) {
       return;
     }
-    var basename = hints.getNameHintForPlaceholder(placeholder),
+    var basename = getNameHintForPlaceholder(placeholder),
         name     = basename;
     var counter = this._countsByPrefix.get(basename);
     while (this._namesSeen.has(name)) {

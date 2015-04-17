@@ -1,13 +1,14 @@
 import assert from 'assert';
-import * as M from './message_types';
 import util from 'util';
 import fs from 'fs';
+import S from 'string';
+
+import * as M from './message_types';
 import {adapter as treeAdapter} from './parse_html';
 import PlaceholderRegistry from './placeholderRegistry';
 import {splitN} from './stringUtils';
 import {quoteHtmlAttribute} from './quoting';
-import * as fingerprinting from './fingerprinting';
-import S from 'string';
+import {computeIdForMessageBuilder} from './fingerprinting';
 
 function nop() {}
 
@@ -179,7 +180,7 @@ class MessageBuilder {
   }
 
   build() {
-    var id = fingerprinting.computeIdForMessageBuilder(this);
+    var id = computeIdForMessageBuilder(this);
     var placeholdersByName = this.placeholderRegistry.toMap();
     return new M.Message(/*id=*/id,
                          /*meaning=*/this.meaning,
